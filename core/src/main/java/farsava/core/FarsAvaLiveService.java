@@ -90,9 +90,13 @@ public class FarsAvaLiveService {
 
                 @Override
                 public void onClose(int code, String reason, boolean remote) {
-                    Log.d(TAG, "closed. Reason: " + reason + code);
+                    Log.d(TAG, "closed. Reason: " + reason);
                     notificationHelper.closeNotification();
-                    stopRecorder();
+                    if (isLive) {
+                        isLive = false;
+                        recorder.stop();
+                        recorder.release();
+                    }
                 }
 
                 @Override
@@ -120,15 +124,7 @@ public class FarsAvaLiveService {
             recorder.release();
             socket.send("close");
         } else
-            throw new IllegalStateException("No live service detected. Please start a service before stopping it.");
-    }
-
-    private void stopRecorder() {
-        if (isLive) {
-            isLive = false;
-            recorder.stop();
-            recorder.release();
-        }
+            throw new IllegalStateException("No live service detected. Please start a live service with start(FarsAvaCallback) method first.");
     }
 
     //region Builder

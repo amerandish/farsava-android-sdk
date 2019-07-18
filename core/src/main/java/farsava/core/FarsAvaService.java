@@ -1,5 +1,13 @@
 package farsava.core;
 
+import android.media.MediaExtractor;
+import android.media.MediaFormat;
+import android.os.Build;
+import android.util.Log;
+
+import androidx.annotation.RequiresApi;
+
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
@@ -9,17 +17,22 @@ import farsava.core.Model.ASRRequestBodyURI;
 import farsava.core.Model.ASRResponseBody;
 import farsava.core.Model.LanguageModelResult;
 import farsava.core.Model.LanguageModelTrainRequestBody;
+import farsava.core.Model.RecognitionAudioData;
+import farsava.core.Model.RecognitionConfig;
 import farsava.core.Model.TTSRequestBody;
 import farsava.core.Model.TTSResponseBody;
 import farsava.core.Model.VoiceSelectionParams;
 import farsava.core.Network.ApiService;
 import farsava.core.Network.FarsAvaCallback;
 import farsava.core.Network.NetworkManager;
+import farsava.core.Util.Enums;
+import farsava.core.Util.FileHelper;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class FarsAvaService {
+    private static final String TAG = "Fars Ava Core";
     private ApiService api;
 
     private FarsAvaService(ApiService apiService) {
@@ -104,6 +117,63 @@ public class FarsAvaService {
                     responseCallback.onFail(t.getMessage());
                 }
             });
+        }
+
+        /**
+         * <h3>Performs synchronous speech recognition</h3>
+         * This resource receives audio data in different formats and transcribes the audio using state-of-the-art deep neural networks. It performs synchronous speech recognition and the result will be available after all audio has been sent and processed. This method is designed for transcription of short audio files up to 1 minute.
+         * For API < 24 use {@linkplain #postASR(File, Enums.AudioEncoding, FarsAvaCallback)}
+         *
+         * @param file             Audio file,
+         *                         currently supported formats are {@code [.wav]},
+         *                         currently supported encodings are {@code [.LINEAR16]},
+         *                         currently supported sample rates are {@code [16000]}.
+         * @param responseCallback {@code onSuccess} returns response body, {@code onFail} returns error message.
+         */
+        @RequiresApi(api = Build.VERSION_CODES.N)
+        public void postASR(final File file, final FarsAvaCallback<ASRResponseBody> responseCallback) {
+            try {
+                // To extract audio data
+                MediaExtractor mediaExtractor = new MediaExtractor();
+                mediaExtractor.setDataSource(file.getPath());
+                MediaFormat mediaFormat = mediaExtractor.getTrackFormat(0);
+                Enums.AudioEncoding audioEncoding;
+                switch (mediaFormat.getInteger(MediaFormat.KEY_PCM_ENCODING)) {
+                    case 2:
+                        audioEncoding = Enums.AudioEncoding.LINEAR16;
+                        break;
+                    default:
+                        throw new IllegalArgumentException("Audio encoding not supported.");
+                }
+
+                postASR(file, audioEncoding, responseCallback);
+            } catch (IOException e) {
+                Log.e(TAG, "postASR: ", e);
+            }
+        }
+
+        /**
+         * <h3>Performs synchronous speech recognition</h3>
+         * This resource receives audio data in different formats and transcribes the audio using state-of-the-art deep neural networks. It performs synchronous speech recognition and the result will be available after all audio has been sent and processed. This method is designed for transcription of short audio files up to 1 minute.
+         *
+         * @param file             Audio file,
+         *                         currently supported formats are {@code [.wav]},
+         *                         currently supported sample rates are {@code [16000]}.
+         * @param audioEncoding    Audio encoding, currently supported encodings are {@code [.LINEAR16]}
+         * @param responseCallback {@code onSuccess} returns response body, {@code onFail} returns error message.
+         */
+        public void postASR(final File file, Enums.AudioEncoding audioEncoding, final FarsAvaCallback<ASRResponseBody> responseCallback) {
+            try {
+                // To extract audio data
+                MediaExtractor mediaExtractor = new MediaExtractor();
+                mediaExtractor.setDataSource(file.getPath());
+                MediaFormat mediaFormat = mediaExtractor.getTrackFormat(0);
+
+                ASRRequestBodyData requestBody = new ASRRequestBodyData(new RecognitionConfig(audioEncoding, mediaFormat.getInteger(MediaFormat.KEY_SAMPLE_RATE)), new RecognitionAudioData(FileHelper.fileToBase64(file)));
+                postASR(requestBody, responseCallback);
+            } catch (IOException e) {
+                Log.e(TAG, "postASR: ", e);
+            }
         }
 
         /**

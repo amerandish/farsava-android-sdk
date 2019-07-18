@@ -26,7 +26,7 @@ public class NotificationHelper {
     }
 
     /**
-     * Create and push the notification
+     * Create and push the notification.
      */
     public void createNotification(String title, String message) {
         mNotificationManager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
@@ -57,7 +57,7 @@ public class NotificationHelper {
     }
 
     /**
-     * Update existing notification
+     * Update existing notification.
      */
     public void updateNotification(String title, String message) {
         mBuilder.setContentTitle(title)
@@ -70,7 +70,7 @@ public class NotificationHelper {
     }
 
     /**
-     * Delete ongoing notification
+     * Delete ongoing notification.
      */
     public void closeNotification() {
         mNotificationManager.cancel(NOTIFICATION_ID);
