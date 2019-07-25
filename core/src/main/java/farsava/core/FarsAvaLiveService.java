@@ -1,6 +1,5 @@
 package farsava.core;
 
-import android.content.Context;
 import android.media.AudioFormat;
 import android.media.AudioRecord;
 import android.media.MediaRecorder;
@@ -15,27 +14,26 @@ import org.java_websocket.handshake.ServerHandshake;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import farsava.core.Model.ASRLiveResponseBody;
+import farsava.core.Model.ASRResponseBody;
 import farsava.core.Network.FarsAvaLiveCallback;
 import farsava.core.Network.NetworkManager;
-import farsava.core.Util.NotificationHelper;
+import farsava.core.Util.Enums;
 
 public class FarsAvaLiveService {
     private static final String TAG = "Fars Ava Core - Live";
     private WebSocketClient socket;
-    private NotificationHelper notificationHelper;
 
     private AudioRecord recorder;
     private int minBufferSize;
     private byte[] buffer;
     private boolean isLive = false;
 
-    private FarsAvaLiveService(Context context) {
-        notificationHelper = new NotificationHelper(context);
-
+    private FarsAvaLiveService() {
         minBufferSize = AudioRecord.getMinBufferSize(16000, AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT);
         buffer = new byte[minBufferSize];
     }
+
+    //region Functions
 
     /**
      * <h3>Performs asynchronous live speech recognition using socket</h3>
@@ -45,7 +43,7 @@ public class FarsAvaLiveService {
      *                         {@code onResponse} returns async server response.
      *                         {@code onFinish} returns final server response which is the completed one.
      */
-    public void start(final FarsAvaLiveCallback<ASRLiveResponseBody> responseCallback) {
+    public void start(final FarsAvaLiveCallback<ASRResponseBody> responseCallback) {
         try {
             if (socket != null && socket.isOpen())
                 throw new IllegalStateException("Service is already live. Please stop service before starting another one.");
@@ -69,19 +67,13 @@ public class FarsAvaLiveService {
                             }
                         }
                     }).start();
-
-                    // Notify user that the microphone is being recorded
-                    notificationHelper.createNotification("فارس آوا", "در حال ضبط و پردازش صدای شما");
                 }
 
                 @Override
                 public void onMessage(String message) {
-                    Log.d(TAG, "success. Response: " + message);
+                    ASRResponseBody responseBody = new Gson().fromJson(message, ASRResponseBody.class);
 
-                    ASRLiveResponseBody responseBody = new Gson().fromJson(message, ASRLiveResponseBody.class);
-
-                    if (responseBody.getFinal()) {
-                        notificationHelper.updateNotification("فارس آوا", "در حال پردازش نهایی صدای شما");
+                    if (responseBody.getStatus().equals(Enums.ASRStatus.done)) {
                         responseCallback.onFinish(responseBody);
                         socket.close();
                     } else
@@ -91,7 +83,6 @@ public class FarsAvaLiveService {
                 @Override
                 public void onClose(int code, String reason, boolean remote) {
                     Log.d(TAG, "closed. Reason: " + reason);
-                    notificationHelper.closeNotification();
                     if (isLive) {
                         isLive = false;
                         recorder.stop();
@@ -102,8 +93,6 @@ public class FarsAvaLiveService {
                 @Override
                 public void onError(Exception ex) {
                     Log.e(TAG, "faced an error. Reason: " + ex.getMessage());
-                    notificationHelper.closeNotification();
-                    stop();
                 }
             };
 
@@ -112,7 +101,6 @@ public class FarsAvaLiveService {
             Log.e(TAG, e.getMessage());
         }
     }
-    //endregion
 
     /**
      * Stop the ongoing live
@@ -126,22 +114,17 @@ public class FarsAvaLiveService {
         } else
             throw new IllegalStateException("No live service detected. Please start a live service with start(FarsAvaCallback) method first.");
     }
+    //endregion
 
     //region Builder
     public static class Builder {
         private String token;
-        private Context context;
 
         public Builder() {
         }
 
         public Builder setJWTTokent(String token) {
             this.token = token;
-            return this;
-        }
-
-        public Builder setContext(Context context) {
-            this.context = context;
             return this;
         }
 
@@ -153,10 +136,8 @@ public class FarsAvaLiveService {
             else
                 throw new NullPointerException("JWT Token cannot be null.");
 
-            if (this.context == null)
-                throw new NullPointerException("Given context cannot be null.");
-
-            return new FarsAvaLiveService(context);
+            return new FarsAvaLiveService();
         }
     }
+    //endregion
 }

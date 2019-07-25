@@ -85,46 +85,4 @@ public class ASRResponseBody {
     public void setResults(List<SpeechRecognitionResult> results) {
         this.results = results;
     }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        ASRResponseBody aSRResponseBody = (ASRResponseBody) o;
-        return (this.transcriptionId == null ? aSRResponseBody.transcriptionId == null : this.transcriptionId.equals(aSRResponseBody.transcriptionId)) &&
-                (this.duration == null ? aSRResponseBody.duration == null : this.duration.equals(aSRResponseBody.duration)) &&
-                (this.inferenceTime == null ? aSRResponseBody.inferenceTime == null : this.inferenceTime.equals(aSRResponseBody.inferenceTime)) &&
-                (this.status == null ? aSRResponseBody.status == null : this.status.equals(aSRResponseBody.status)) &&
-                (this.results == null ? aSRResponseBody.results == null : this.results.equals(aSRResponseBody.results));
-    }
-
-    @Override
-    public int hashCode() {
-        int result = 17;
-        result = 31 * result + (this.transcriptionId == null ? 0 : this.transcriptionId.hashCode());
-        result = 31 * result + (this.duration == null ? 0 : this.duration.hashCode());
-        result = 31 * result + (this.inferenceTime == null ? 0 : this.inferenceTime.hashCode());
-        result = 31 * result + (this.status == null ? 0 : this.status.hashCode());
-        result = 31 * result + (this.results == null ? 0 : this.results.hashCode());
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("class ASRResponseBody {\n");
-
-        sb.append("  transcriptionId: ").append(transcriptionId).append("\n");
-        sb.append("  duration: ").append(duration).append("\n");
-        sb.append("  inferenceTime: ").append(inferenceTime).append("\n");
-        sb.append("  status: ").append(status).append("\n");
-        sb.append("  results: ").append(results).append("\n");
-        sb.append("}\n");
-        return sb.toString();
-    }
 }

@@ -32,34 +32,4 @@ public class RecognitionAudioURI {
     public void setUri(String uri) {
         this.uri = uri;
     }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        RecognitionAudioURI recognitionAudioURI = (RecognitionAudioURI) o;
-        return (this.uri == null ? recognitionAudioURI.uri == null : this.uri.equals(recognitionAudioURI.uri));
-    }
-
-    @Override
-    public int hashCode() {
-        int result = 17;
-        result = 31 * result + (this.uri == null ? 0 : this.uri.hashCode());
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("class RecognitionAudioURI {\n");
-
-        sb.append("  uri: ").append(uri).append("\n");
-        sb.append("}\n");
-        return sb.toString();
-    }
 }

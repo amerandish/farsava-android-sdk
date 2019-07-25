@@ -14,8 +14,6 @@ package farsava.core.Model;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.math.BigDecimal;
-
 import farsava.core.Util.Enums;
 
 /**
@@ -25,15 +23,20 @@ import farsava.core.Util.Enums;
 public class TTSAudioConfig {
 
     @SerializedName("audioEncoding")
-    private Enums.AudioEncoding audioEncoding = null;
+    private Enums.AudioEncoding audioEncoding;
     @SerializedName("sampleRateHertz")
     private Integer sampleRateHertz = 16000;
     @SerializedName("speakingRate")
-    private BigDecimal speakingRate = null;
+    private float speakingRate = 1.0f;
     @SerializedName("pitch")
-    private BigDecimal pitch = null;
+    private float pitch = 0.0f;
     @SerializedName("volumeGainDb")
-    private BigDecimal volumeGainDb = null;
+    private float volumeGainDb = 0.0f;
+
+    public TTSAudioConfig(Enums.AudioEncoding audioEncoding, Integer sampleRateHertz) {
+        this.audioEncoding = audioEncoding;
+        this.sampleRateHertz = sampleRateHertz;
+    }
 
     /**
      *
@@ -62,11 +65,11 @@ public class TTSAudioConfig {
      * minimum: 0.25
      * maximum: 4
      **/
-    public BigDecimal getSpeakingRate() {
+    public float getSpeakingRate() {
         return speakingRate;
     }
 
-    public void setSpeakingRate(BigDecimal speakingRate) {
+    public void setSpeakingRate(float speakingRate) {
         this.speakingRate = speakingRate;
     }
 
@@ -75,11 +78,11 @@ public class TTSAudioConfig {
      * minimum: -20.0
      * maximum: 20.0
      **/
-    public BigDecimal getPitch() {
+    public float getPitch() {
         return pitch;
     }
 
-    public void setPitch(BigDecimal pitch) {
+    public void setPitch(float pitch) {
         this.pitch = pitch;
     }
 
@@ -88,53 +91,11 @@ public class TTSAudioConfig {
      * minimum: -96.0
      * maximum: 16.0
      **/
-    public BigDecimal getVolumeGainDb() {
+    public float getVolumeGainDb() {
         return volumeGainDb;
     }
 
-    public void setVolumeGainDb(BigDecimal volumeGainDb) {
+    public void setVolumeGainDb(float volumeGainDb) {
         this.volumeGainDb = volumeGainDb;
-    }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        TTSAudioConfig tTSAudioConfig = (TTSAudioConfig) o;
-        return (this.audioEncoding == null ? tTSAudioConfig.audioEncoding == null : this.audioEncoding.equals(tTSAudioConfig.audioEncoding)) &&
-                (this.sampleRateHertz == null ? tTSAudioConfig.sampleRateHertz == null : this.sampleRateHertz.equals(tTSAudioConfig.sampleRateHertz)) &&
-                (this.speakingRate == null ? tTSAudioConfig.speakingRate == null : this.speakingRate.equals(tTSAudioConfig.speakingRate)) &&
-                (this.pitch == null ? tTSAudioConfig.pitch == null : this.pitch.equals(tTSAudioConfig.pitch)) &&
-                (this.volumeGainDb == null ? tTSAudioConfig.volumeGainDb == null : this.volumeGainDb.equals(tTSAudioConfig.volumeGainDb));
-    }
-
-    @Override
-    public int hashCode() {
-        int result = 17;
-        result = 31 * result + (this.audioEncoding == null ? 0 : this.audioEncoding.hashCode());
-        result = 31 * result + (this.sampleRateHertz == null ? 0 : this.sampleRateHertz.hashCode());
-        result = 31 * result + (this.speakingRate == null ? 0 : this.speakingRate.hashCode());
-        result = 31 * result + (this.pitch == null ? 0 : this.pitch.hashCode());
-        result = 31 * result + (this.volumeGainDb == null ? 0 : this.volumeGainDb.hashCode());
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("class TTSAudioConfig {\n");
-
-        sb.append("  audioEncoding: ").append(audioEncoding).append("\n");
-        sb.append("  sampleRateHertz: ").append(sampleRateHertz).append("\n");
-        sb.append("  speakingRate: ").append(speakingRate).append("\n");
-        sb.append("  pitch: ").append(pitch).append("\n");
-        sb.append("  volumeGainDb: ").append(volumeGainDb).append("\n");
-        sb.append("}\n");
-        return sb.toString();
     }
 }

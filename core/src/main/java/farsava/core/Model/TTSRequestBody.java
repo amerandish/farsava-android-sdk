@@ -17,11 +17,18 @@ import com.google.gson.annotations.SerializedName;
 public class TTSRequestBody {
 
     @SerializedName("synthesisInput")
-    private SynthesisInput synthesisInput = null;
+    private SynthesisInput synthesisInput;
     @SerializedName("voiceConfig")
-    private VoiceSelectionParams voiceConfig = null;
+    private VoiceSelectionParams voiceConfig;
     @SerializedName("audioConfig")
-    private TTSAudioConfig audioConfig = null;
+    private TTSAudioConfig audioConfig;
+
+    public TTSRequestBody(SynthesisInput synthesisInput, VoiceSelectionParams voiceConfig, TTSAudioConfig audioConfig) {
+        this.synthesisInput = synthesisInput;
+        this.voiceConfig = voiceConfig;
+        this.audioConfig = audioConfig;
+    }
+
 
     /**
      *
@@ -54,41 +61,5 @@ public class TTSRequestBody {
 
     public void setAudioConfig(TTSAudioConfig audioConfig) {
         this.audioConfig = audioConfig;
-    }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        TTSRequestBody tTSRequestBody = (TTSRequestBody) o;
-        return (this.synthesisInput == null ? tTSRequestBody.synthesisInput == null : this.synthesisInput.equals(tTSRequestBody.synthesisInput)) &&
-                (this.voiceConfig == null ? tTSRequestBody.voiceConfig == null : this.voiceConfig.equals(tTSRequestBody.voiceConfig)) &&
-                (this.audioConfig == null ? tTSRequestBody.audioConfig == null : this.audioConfig.equals(tTSRequestBody.audioConfig));
-    }
-
-    @Override
-    public int hashCode() {
-        int result = 17;
-        result = 31 * result + (this.synthesisInput == null ? 0 : this.synthesisInput.hashCode());
-        result = 31 * result + (this.voiceConfig == null ? 0 : this.voiceConfig.hashCode());
-        result = 31 * result + (this.audioConfig == null ? 0 : this.audioConfig.hashCode());
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("class TTSRequestBody {\n");
-
-        sb.append("  synthesisInput: ").append(synthesisInput).append("\n");
-        sb.append("  voiceConfig: ").append(voiceConfig).append("\n");
-        sb.append("  audioConfig: ").append(audioConfig).append("\n");
-        sb.append("}\n");
-        return sb.toString();
     }
 }

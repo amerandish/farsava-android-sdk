@@ -57,40 +57,4 @@ public class LanguageModelResult {
     public void setStatus(Enums.LMStatus status) {
         this.status = status;
     }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        LanguageModelResult languageModelResult = (LanguageModelResult) o;
-        return (this.languageModelId == null ? languageModelResult.languageModelId == null : this.languageModelId.equals(languageModelResult.languageModelId)) &&
-                (this.name == null ? languageModelResult.name == null : this.name.equals(languageModelResult.name)) &&
-                (this.status == null ? languageModelResult.status == null : this.status.equals(languageModelResult.status));
-    }
-
-    @Override
-    public int hashCode() {
-        int result = 17;
-        result = 31 * result + (this.languageModelId == null ? 0 : this.languageModelId.hashCode());
-        result = 31 * result + (this.name == null ? 0 : this.name.hashCode());
-        result = 31 * result + (this.status == null ? 0 : this.status.hashCode());
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("class LanguageModelResult {\n");
-
-        sb.append("  languageModelId: ").append(languageModelId).append("\n");
-        sb.append("  name: ").append(name).append("\n");
-        sb.append("  status: ").append(status).append("\n");
-        sb.append("}\n");
-        return sb.toString();
-    }
 }

@@ -75,43 +75,4 @@ public class ErrorResponseBody {
     public void setType(String type) {
         this.type = type;
     }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        ErrorResponseBody error = (ErrorResponseBody) o;
-        return (this.status == 0 ? error.status == 0 : this.status == error.status) &&
-                (this.detail == null ? error.detail == null : this.detail.equals(error.detail)) &&
-                (this.title == null ? error.title == null : this.title.equals(error.title)) &&
-                (this.type == null ? error.type == null : this.type.equals(error.type));
-    }
-
-    @Override
-    public int hashCode() {
-        int result = 17;
-        result = 31 * result + (this.status);
-        result = 31 * result + (this.detail == null ? 0 : this.detail.hashCode());
-        result = 31 * result + (this.title == null ? 0 : this.title.hashCode());
-        result = 31 * result + (this.type == null ? 0 : this.type.hashCode());
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("class ErrorResponseBody {\n");
-
-        sb.append("  status: ").append(status).append("\n");
-        sb.append("  detail: ").append(detail).append("\n");
-        sb.append("  title: ").append(title).append("\n");
-        sb.append("  type: ").append(type).append("\n");
-        sb.append("}\n");
-        return sb.toString();
-    }
 }

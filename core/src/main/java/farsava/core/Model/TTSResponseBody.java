@@ -17,46 +17,16 @@ import com.google.gson.annotations.SerializedName;
 public class TTSResponseBody {
 
     @SerializedName("audioContent")
-    private byte[] audioContent = null;
+    private String audioContent = null;
 
     /**
      * The audio data bytes encoded as specified in the request, including the header (For LINEAR16 audio, we include the WAV header). A base64-encoded string.
      **/
-    public byte[] getAudioContent() {
+    public String getAudioContent() {
         return audioContent;
     }
 
-    public void setAudioContent(byte[] audioContent) {
+    public void setAudioContent(String audioContent) {
         this.audioContent = audioContent;
-    }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        TTSResponseBody tTSResponseBody = (TTSResponseBody) o;
-        return (this.audioContent == null ? tTSResponseBody.audioContent == null : this.audioContent.equals(tTSResponseBody.audioContent));
-    }
-
-    @Override
-    public int hashCode() {
-        int result = 17;
-        result = 31 * result + (this.audioContent == null ? 0 : this.audioContent.hashCode());
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("class TTSResponseBody {\n");
-
-        sb.append("  audioContent: ").append(audioContent).append("\n");
-        sb.append("}\n");
-        return sb.toString();
     }
 }

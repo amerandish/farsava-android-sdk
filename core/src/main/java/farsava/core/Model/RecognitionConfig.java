@@ -26,7 +26,7 @@ public class RecognitionConfig {
     @SerializedName("sampleRateHertz")
     private Integer sampleRateHertz = 16000;
     @SerializedName("languageCode")
-    private Enums.LanguageCode languageCode = null;
+    private Enums.LanguageCode languageCode = Enums.LanguageCode.fa;
     @SerializedName("maxAlternatives")
     private Integer maxAlternatives = 1;
     @SerializedName("profanityFilter")
@@ -34,12 +34,11 @@ public class RecognitionConfig {
     @SerializedName("asrModel")
     private String asrModel = "default";
     @SerializedName("languageModel")
-    private String languageModel = null;
+    private String languageModel = "general";
 
-    public RecognitionConfig(Enums.AudioEncoding audioEncoding, Integer sampleRateHertz, Enums.LanguageCode languageCode) {
+    public RecognitionConfig(Enums.AudioEncoding audioEncoding, Integer sampleRateHertz) {
         this.audioEncoding = audioEncoding;
         this.sampleRateHertz = sampleRateHertz;
-        this.languageCode = languageCode;
     }
 
     public RecognitionConfig(Enums.AudioEncoding audioEncoding, Integer sampleRateHertz, Enums.LanguageCode languageCode, Integer maxAlternatives, Boolean profanityFilter, String asrModel, String languageModel) {

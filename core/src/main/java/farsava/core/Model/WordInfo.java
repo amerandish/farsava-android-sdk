@@ -70,43 +70,4 @@ public class WordInfo {
     public void setConfidence(Double confidence) {
         this.confidence = confidence;
     }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        WordInfo wordInfo = (WordInfo) o;
-        return (this.startTime == null ? wordInfo.startTime == null : this.startTime.equals(wordInfo.startTime)) &&
-                (this.endTime == null ? wordInfo.endTime == null : this.endTime.equals(wordInfo.endTime)) &&
-                (this.word == null ? wordInfo.word == null : this.word.equals(wordInfo.word)) &&
-                (this.confidence == null ? wordInfo.confidence == null : this.confidence.equals(wordInfo.confidence));
-    }
-
-    @Override
-    public int hashCode() {
-        int result = 17;
-        result = 31 * result + (this.startTime == null ? 0 : this.startTime.hashCode());
-        result = 31 * result + (this.endTime == null ? 0 : this.endTime.hashCode());
-        result = 31 * result + (this.word == null ? 0 : this.word.hashCode());
-        result = 31 * result + (this.confidence == null ? 0 : this.confidence.hashCode());
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("class WordInfo {\n");
-
-        sb.append("  startTime: ").append(startTime).append("\n");
-        sb.append("  endTime: ").append(endTime).append("\n");
-        sb.append("  word: ").append(word).append("\n");
-        sb.append("  confidence: ").append(confidence).append("\n");
-        sb.append("}\n");
-        return sb.toString();
-    }
 }

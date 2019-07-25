@@ -350,7 +350,7 @@ public class FarsAvaService {
         }
     }
 
-    private class Voice {
+    public class Voice {
         private Voice() {
         }
 

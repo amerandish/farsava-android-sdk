@@ -47,37 +47,4 @@ public class ASRRequestBodyData {
     public void setAudio(RecognitionAudioData audio) {
         this.audio = audio;
     }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        ASRRequestBodyData aSRRequestBodyData = (ASRRequestBodyData) o;
-        return (this.config == null ? aSRRequestBodyData.config == null : this.config.equals(aSRRequestBodyData.config)) &&
-                (this.audio == null ? aSRRequestBodyData.audio == null : this.audio.equals(aSRRequestBodyData.audio));
-    }
-
-    @Override
-    public int hashCode() {
-        int result = 17;
-        result = 31 * result + (this.config == null ? 0 : this.config.hashCode());
-        result = 31 * result + (this.audio == null ? 0 : this.audio.hashCode());
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("class ASRRequestBodyData {\n");
-
-        sb.append("  config: ").append(config).append("\n");
-        sb.append("  audio: ").append(audio).append("\n");
-        sb.append("}\n");
-        return sb.toString();
-    }
 }

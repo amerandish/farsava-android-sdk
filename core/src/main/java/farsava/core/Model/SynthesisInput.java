@@ -24,6 +24,10 @@ public class SynthesisInput {
     @SerializedName("ssml")
     private String ssml = null;
 
+    public SynthesisInput(String text) {
+        this.text = text;
+    }
+
     /**
      * The raw text to be synthesized.
      **/
@@ -44,38 +48,5 @@ public class SynthesisInput {
 
     public void setSsml(String ssml) {
         this.ssml = ssml;
-    }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        SynthesisInput synthesisInput = (SynthesisInput) o;
-        return (this.text == null ? synthesisInput.text == null : this.text.equals(synthesisInput.text)) &&
-                (this.ssml == null ? synthesisInput.ssml == null : this.ssml.equals(synthesisInput.ssml));
-    }
-
-    @Override
-    public int hashCode() {
-        int result = 17;
-        result = 31 * result + (this.text == null ? 0 : this.text.hashCode());
-        result = 31 * result + (this.ssml == null ? 0 : this.ssml.hashCode());
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("class SynthesisInput {\n");
-
-        sb.append("  text: ").append(text).append("\n");
-        sb.append("  ssml: ").append(ssml).append("\n");
-        sb.append("}\n");
-        return sb.toString();
     }
 }

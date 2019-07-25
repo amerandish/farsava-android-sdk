@@ -24,13 +24,16 @@ import farsava.core.Util.Enums;
 public class VoiceSelectionParams {
 
     @SerializedName("voiceId")
-    private UUID voiceId = null;
+    private UUID voiceId = UUID.fromString("b6e9c993-729e-4e0f-955b-f229cf1f77ee");
     @SerializedName("languageCode")
-    private Enums.LanguageCode languageCode = null;
+    private Enums.LanguageCode languageCode = Enums.LanguageCode.fa;
     @SerializedName("name")
-    private String name = null;
+    private String name = "default";
     @SerializedName("gender")
-    private Enums.VoiceGender gender = null;
+    private Enums.VoiceGender gender = Enums.VoiceGender.female;
+
+    public VoiceSelectionParams() {
+    }
 
     /**
      * id of the desired voice to synthesize.
@@ -74,44 +77,5 @@ public class VoiceSelectionParams {
 
     public void setGender(Enums.VoiceGender gender) {
         this.gender = gender;
-    }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        VoiceSelectionParams voiceSelectionParams = (VoiceSelectionParams) o;
-        return (this.voiceId == null ? voiceSelectionParams.voiceId == null : this.voiceId.equals(voiceSelectionParams.voiceId)) &&
-                (this.languageCode == null ? voiceSelectionParams.languageCode == null : this.languageCode.equals(voiceSelectionParams.languageCode)) &&
-                (this.name == null ? voiceSelectionParams.name == null : this.name.equals(voiceSelectionParams.name)) &&
-                (this.gender == null ? voiceSelectionParams.gender == null : this.gender.equals(voiceSelectionParams.gender));
-    }
-
-    @Override
-    public int hashCode() {
-        int result = 17;
-        result = 31 * result + (this.voiceId == null ? 0 : this.voiceId.hashCode());
-        result = 31 * result + (this.languageCode == null ? 0 : this.languageCode.hashCode());
-        result = 31 * result + (this.name == null ? 0 : this.name.hashCode());
-        result = 31 * result + (this.gender == null ? 0 : this.gender.hashCode());
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("class VoiceSelectionParams {\n");
-
-        sb.append("  voiceId: ").append(voiceId).append("\n");
-        sb.append("  languageCode: ").append(languageCode).append("\n");
-        sb.append("  name: ").append(name).append("\n");
-        sb.append("  gender: ").append(gender).append("\n");
-        sb.append("}\n");
-        return sb.toString();
     }
 }

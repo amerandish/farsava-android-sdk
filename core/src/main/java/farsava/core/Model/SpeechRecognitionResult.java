@@ -59,40 +59,4 @@ public class SpeechRecognitionResult {
     public void setWords(List<WordInfo> words) {
         this.words = words;
     }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        SpeechRecognitionResult speechRecognitionResult = (SpeechRecognitionResult) o;
-        return (this.transcript == null ? speechRecognitionResult.transcript == null : this.transcript.equals(speechRecognitionResult.transcript)) &&
-                (this.confidence == null ? speechRecognitionResult.confidence == null : this.confidence.equals(speechRecognitionResult.confidence)) &&
-                (this.words == null ? speechRecognitionResult.words == null : this.words.equals(speechRecognitionResult.words));
-    }
-
-    @Override
-    public int hashCode() {
-        int result = 17;
-        result = 31 * result + (this.transcript == null ? 0 : this.transcript.hashCode());
-        result = 31 * result + (this.confidence == null ? 0 : this.confidence.hashCode());
-        result = 31 * result + (this.words == null ? 0 : this.words.hashCode());
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("class SpeechRecognitionResult {\n");
-
-        sb.append("  transcript: ").append(transcript).append("\n");
-        sb.append("  confidence: ").append(confidence).append("\n");
-        sb.append("  words: ").append(words).append("\n");
-        sb.append("}\n");
-        return sb.toString();
-    }
 }

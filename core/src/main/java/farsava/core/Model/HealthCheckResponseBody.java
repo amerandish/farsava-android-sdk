@@ -63,40 +63,4 @@ public class HealthCheckResponseBody {
     public void setVersion(String version) {
         this.version = version;
     }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        HealthCheckResponseBody healthCheckResponseBody = (HealthCheckResponseBody) o;
-        return (this.status == null ? healthCheckResponseBody.status == null : this.status.equals(healthCheckResponseBody.status)) &&
-                (this.message == null ? healthCheckResponseBody.message == null : this.message.equals(healthCheckResponseBody.message)) &&
-                (this.version == null ? healthCheckResponseBody.version == null : this.version.equals(healthCheckResponseBody.version));
-    }
-
-    @Override
-    public int hashCode() {
-        int result = 17;
-        result = 31 * result + (this.status == null ? 0 : this.status.hashCode());
-        result = 31 * result + (this.message == null ? 0 : this.message.hashCode());
-        result = 31 * result + (this.version == null ? 0 : this.version.hashCode());
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("class HealthCheckResponseBody {\n");
-
-        sb.append("  status: ").append(status).append("\n");
-        sb.append("  message: ").append(message).append("\n");
-        sb.append("  version: ").append(version).append("\n");
-        sb.append("}\n");
-        return sb.toString();
-    }
 }

@@ -44,37 +44,4 @@ public class LanguageModelTrainRequestBody {
     public void setName(String name) {
         this.name = name;
     }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        LanguageModelTrainRequestBody languageModelTrainRequestBody = (LanguageModelTrainRequestBody) o;
-        return (this.corpora == null ? languageModelTrainRequestBody.corpora == null : this.corpora.equals(languageModelTrainRequestBody.corpora)) &&
-                (this.name == null ? languageModelTrainRequestBody.name == null : this.name.equals(languageModelTrainRequestBody.name));
-    }
-
-    @Override
-    public int hashCode() {
-        int result = 17;
-        result = 31 * result + (this.corpora == null ? 0 : this.corpora.hashCode());
-        result = 31 * result + (this.name == null ? 0 : this.name.hashCode());
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("class LanguageModelTrainRequestBody {\n");
-
-        sb.append("  corpora: ").append(corpora).append("\n");
-        sb.append("  name: ").append(name).append("\n");
-        sb.append("}\n");
-        return sb.toString();
-    }
 }

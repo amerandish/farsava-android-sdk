@@ -20,50 +20,20 @@ import com.google.gson.annotations.SerializedName;
 public class RecognitionAudioData {
 
     @SerializedName("data")
-    private byte[] data = null;
+    private String data = null;
 
-    public RecognitionAudioData(byte[] data) {
+    public RecognitionAudioData(String data) {
         this.data = data;
     }
 
     /**
      * The audio data bytes encoded as specified in RecognitionConfig.   A base64-encoded string.
      **/
-    public byte[] getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(byte[] data) {
+    public void setData(String data) {
         this.data = data;
-    }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        RecognitionAudioData recognitionAudioData = (RecognitionAudioData) o;
-        return (this.data == null ? recognitionAudioData.data == null : this.data.equals(recognitionAudioData.data));
-    }
-
-    @Override
-    public int hashCode() {
-        int result = 17;
-        result = 31 * result + (this.data == null ? 0 : this.data.hashCode());
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("class RecognitionAudioData {\n");
-
-        sb.append("  data: ").append(data).append("\n");
-        sb.append("}\n");
-        return sb.toString();
     }
 }
