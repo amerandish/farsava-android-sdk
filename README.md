@@ -21,12 +21,11 @@ Add it in your root build.gradle at the end of repositories:
 	}
 	```
 Step 2. Add the dependency
-
-	```java
+```java
 	dependencies {
         		implementation 'com.github.User:Repo:Tag'
         	}
-	```
+```
 That's it!
 
 ## Usage
