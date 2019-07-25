@@ -18,13 +18,15 @@ Add it in your root build.gradle at the end of repositories:
 			...
 			maven { url 'https://jitpack.io' }
 		}
-	}```
+	}
+	```
 Step 2. Add the dependency
 
 	```java
 	dependencies {
-        		implementation 'com.github.User:Repo:Tag'
-        	}```
+        		implementation 'com.github.amerandish:farsava-android-sdk:1.0.0-alpha'
+        	}
+    ```
 That's it!
 
 ## Usage
