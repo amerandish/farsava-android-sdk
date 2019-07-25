@@ -18,13 +18,15 @@ Add it in your root build.gradle at the end of repositories:
 			...
 			maven { url 'https://jitpack.io' }
 		}
-	}```
+	}
+	```
 Step 2. Add the dependency
 
 	```java
 	dependencies {
         		implementation 'com.github.User:Repo:Tag'
-        	}```
+        	}
+	```
 That's it!
 
 ## Usage
@@ -36,13 +38,15 @@ for endpoints:
     ```java
     farsAvaService = new FarsAvaService.Builder()
                                  .setJWTTokent(YOUR_TOKEN_HERE)
-                                 .build();```
+                                 .build();
+    ```
 for live features: 
 
     ```java
     farsAvaLiveService = new FarsAvaLiveService.Builder()
                             .setJWTTokent(YOUR_TOKEN_HERE)
-                            .build();```
+                            .build()
+    ```
                             
 for more info check out the [sample app](https://github.com/amerandish/farsava-android-sdk/tree/master/app).
 
