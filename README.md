@@ -11,15 +11,14 @@ A repository for Android native software development kit (SDK) of Farsava API.
 ## Installation
 
 Add it in your root build.gradle at the end of repositories:
-
-	```java
-	allprojects {
+```java
+allprojects {
 		repositories {
 			...
 			maven { url 'https://jitpack.io' }
 		}
 	}
-	```
+```
 Step 2. Add the dependency
 ```java
 	dependencies {
@@ -32,21 +31,18 @@ That's it!
 
 Build required object with a simple builder design pattern.
 
-for endpoints:
-    
-    ```java
+for endpoints:    
+```java
     farsAvaService = new FarsAvaService.Builder()
                                  .setJWTTokent(YOUR_TOKEN_HERE)
                                  .build();
-    ```
+```
 for live features: 
-
-    ```java
+```java
     farsAvaLiveService = new FarsAvaLiveService.Builder()
                             .setJWTTokent(YOUR_TOKEN_HERE)
                             .build()
-    ```
-                            
+```                           
 for more info check out the [sample app](https://github.com/amerandish/farsava-android-sdk/tree/master/app).
 
 ## License
