@@ -1,4 +1,4 @@
-package farsava.core.Network;
+package farsava.core.data.remote;
 
 public interface FarsAvaCallback<T> {
     void onSuccess(T responseBody);

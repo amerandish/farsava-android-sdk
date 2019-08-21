@@ -1,55 +1,50 @@
+
 #  Farsava Android SDK
 [![Documentation](https://img.shields.io/badge/api-reference-blue.svg)](https://bump.sh/doc/farsava)
 
 ## Overview
-
 A repository for Android native software development kit (SDK) of Farsava API.
 
 - Min SDK : 19
 - Target SDK : 29
 
 ## Installation
-
 Add it in your root build.gradle at the end of repositories:
-
-	```java
-	allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
+```java
+allprojects {
+	repositories {
+		...
+		maven { url 'https://jitpack.io' }
 	}
-	```
+}
+```
 Step 2. Add the dependency
-
-	```java
-	dependencies {
-        		implementation 'com.github.amerandish:farsava-android-sdk:1.0.0-alpha'
-        	}
-    ```
+```java
+dependencies {
+		...
+        	implementation 'com.github.amerandish:farsava-android-sdk:1.0.0-alpha'
+        }
+```
 That's it!
 
 ## Usage
-
 Build required object with a simple builder design pattern.
 
 for endpoints:
-    
-    ```java
-    farsAvaService = new FarsAvaService.Builder()
-                                 .setJWTTokent(YOUR_TOKEN_HERE)
-                                 .build();```
+```java
+FarsAvaService apiService = new FarsAvaService.Builder()
+		               .setJWTTokent(YOUR_TOKEN_HERE)
+			       .build();
+```
 for live features: 
-
-    ```java
-    farsAvaLiveService = new FarsAvaLiveService.Builder()
-                            .setJWTTokent(YOUR_TOKEN_HERE)
-                            .build();```
-                            
-for more info check out the [sample app](https://github.com/amerandish/farsava-android-sdk/tree/master/app).
+```java
+FarsAvaLiveService liveService = new FarsAvaLiveService.Builder()
+				    .setJWTTokent(YOUR_TOKEN_HERE)
+			 	    .build();
+```
+for more check out the [sample application](https://github.com/amerandish/farsava-android-sdk/tree/master/app).
 
 ## License
-
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
     You may obtain a copy of the License at
@@ -63,9 +58,7 @@ for more info check out the [sample app](https://github.com/amerandish/farsava-a
     limitations under the License.
 
 ## Author
-
-[Mohammad Hosein Kalantarian](https://www.mhksoft.com)
+[Mohammad Hosein Kalantarian](http://www.mhksoft.com)
 
 ## Organization
-
 [Amerandish](https://www.amerandish.com)

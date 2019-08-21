@@ -1,16 +1,16 @@
-package farsava.core.Network;
+package farsava.core.data.remote;
 
 import java.util.List;
 import java.util.UUID;
 
-import farsava.core.Model.ASRRequestBodyData;
-import farsava.core.Model.ASRRequestBodyURI;
-import farsava.core.Model.ASRResponseBody;
-import farsava.core.Model.LanguageModelResult;
-import farsava.core.Model.LanguageModelTrainRequestBody;
-import farsava.core.Model.TTSRequestBody;
-import farsava.core.Model.TTSResponseBody;
-import farsava.core.Model.VoiceSelectionParams;
+import farsava.core.data.model.ASRRequestBodyData;
+import farsava.core.data.model.ASRRequestBodyURI;
+import farsava.core.data.model.ASRResponseBody;
+import farsava.core.data.model.LanguageModelResult;
+import farsava.core.data.model.LanguageModelTrainRequestBody;
+import farsava.core.data.model.TTSRequestBody;
+import farsava.core.data.model.TTSResponseBody;
+import farsava.core.data.model.VoiceSelectionParams;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;

@@ -14,10 +14,10 @@ import org.java_websocket.handshake.ServerHandshake;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import farsava.core.Model.ASRResponseBody;
-import farsava.core.Network.FarsAvaLiveCallback;
-import farsava.core.Network.NetworkManager;
-import farsava.core.Util.Enums;
+import farsava.core.data.model.ASRResponseBody;
+import farsava.core.data.remote.FarsAvaLiveCallback;
+import farsava.core.util.Enums;
+import farsava.core.util.NetworkManager;
 
 public class FarsAvaLiveService {
     private static final String TAG = "Fars Ava Core - Live";

@@ -10,16 +10,21 @@
  * Do not edit the class manually.
  */
 
-package farsava.core.Model;
+package farsava.core.data.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ASRRequestBodyURI {
+public class ASRRequestBodyData {
 
     @SerializedName("config")
     private RecognitionConfig config = null;
     @SerializedName("audio")
-    private RecognitionAudioURI audio = null;
+    private RecognitionAudioData audio = null;
+
+    public ASRRequestBodyData(RecognitionConfig config, RecognitionAudioData audio) {
+        this.config = config;
+        this.audio = audio;
+    }
 
     /**
      *
@@ -35,11 +40,11 @@ public class ASRRequestBodyURI {
     /**
      *
      **/
-    public RecognitionAudioURI getAudio() {
+    public RecognitionAudioData getAudio() {
         return audio;
     }
 
-    public void setAudio(RecognitionAudioURI audio) {
+    public void setAudio(RecognitionAudioData audio) {
         this.audio = audio;
     }
 }

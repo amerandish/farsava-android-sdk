@@ -10,13 +10,11 @@
  * Do not edit the class manually.
  */
 
-package farsava.core.Model;
+package farsava.core.data.model;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.UUID;
-
-import farsava.core.Util.Enums;
+import farsava.core.util.Enums;
 
 /**
  * The desired voice of the synthesized audio.
@@ -24,7 +22,7 @@ import farsava.core.Util.Enums;
 public class VoiceSelectionParams {
 
     @SerializedName("voiceId")
-    private UUID voiceId = UUID.fromString("b6e9c993-729e-4e0f-955b-f229cf1f77ee");
+    private String voiceId = "b6e9c993-729e-4e0f-955b-f229cf1f77ee";
     @SerializedName("languageCode")
     private Enums.LanguageCode languageCode = Enums.LanguageCode.fa;
     @SerializedName("name")
@@ -38,11 +36,11 @@ public class VoiceSelectionParams {
     /**
      * id of the desired voice to synthesize.
      **/
-    public UUID getVoiceId() {
+    public String getVoiceId() {
         return voiceId;
     }
 
-    public void setVoiceId(UUID voiceId) {
+    public void setVoiceId(String voiceId) {
         this.voiceId = voiceId;
     }
 

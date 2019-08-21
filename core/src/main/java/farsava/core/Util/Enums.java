@@ -1,4 +1,4 @@
-package farsava.core.Util;
+package farsava.core.util;
 
 public class Enums {
     public enum Status {

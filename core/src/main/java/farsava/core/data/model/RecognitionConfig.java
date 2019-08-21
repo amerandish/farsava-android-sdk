@@ -10,11 +10,11 @@
  * Do not edit the class manually.
  */
 
-package farsava.core.Model;
+package farsava.core.data.model;
 
 import com.google.gson.annotations.SerializedName;
 
-import farsava.core.Util.Enums;
+import farsava.core.util.Enums;
 
 /**
  * Provides information to the recognizer that specifies how to process the request.

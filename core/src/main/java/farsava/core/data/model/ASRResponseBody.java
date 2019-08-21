@@ -10,14 +10,14 @@
  * Do not edit the class manually.
  */
 
-package farsava.core.Model;
+package farsava.core.data.model;
 
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 import java.util.UUID;
 
-import farsava.core.Util.Enums;
+import farsava.core.util.Enums;
 
 public class ASRResponseBody {
     @SerializedName("transcriptionId")
